@@ -1,0 +1,1070 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Lexart Labs products",
+    "description": "This API aims to view and manipulate the products of the system created for the Lexart Labs test.",
+    "termsOfService": "",
+    "contact": {
+      "email": "alexsamaralns@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5002/api/v1",
+      "description": "API prodution"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "summary": "Login",
+        "description": "This route will provide access permission",
+        "tags": ["Login"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Bad request"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "data": {
+                    "status": "success",
+                      "message": "Access authorized!",
+                      "id": 121,
+                      "name": "Amaral Alex",
+                      "email": "alexsamaralns@gmail.com",
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIxLCJpYXQiOjE3MjEwNjExMjYsImV4cCI6MTcyMTEwNDMyNn0.3YhD7WX1mwNm_Mhmsb1Oq3FYRRpgrdPzhxUPt_XaLRc"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/getProducts": {
+      "post": {
+        "summary": "Get products",
+        "description": "This route will return 50 products per page",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "page": {
+                  "value": {
+                    "page": "2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/GetProductResponse"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "status": "success",
+                      "data": [
+                        {
+                          "id": 95601,
+                          "name": "Product 95601",
+                          "brand": "Google",
+                          "model": "Model 95601",
+                          "price": "212.10",
+                          "operating_system": "Android",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95602,
+                          "name": "Product 95602",
+                          "brand": "LG",
+                          "model": "Model 95602",
+                          "price": "153.45",
+                          "operating_system": "Android",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95603,
+                          "name": "Product 95603",
+                          "brand": "Google",
+                          "model": "Model 95603",
+                          "price": "67.16",
+                          "operating_system": "iOS",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95604,
+                          "name": "Product 95604",
+                          "brand": "Apple",
+                          "model": "Model 95604",
+                          "price": "337.16",
+                          "operating_system": "Android",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95605,
+                          "name": "Product 95605",
+                          "brand": "Samsung",
+                          "model": "Model 95605",
+                          "price": "525.36",
+                          "operating_system": "Android",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95606,
+                          "name": "Product 95606",
+                          "brand": "Apple",
+                          "model": "Model 95606",
+                          "price": "322.39",
+                          "operating_system": "iOS",
+                          "createBy": 8,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95607,
+                          "name": "Product 95607",
+                          "brand": "Google",
+                          "model": "Model 95607",
+                          "price": "95.75",
+                          "operating_system": "iOS",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95608,
+                          "name": "Product 95608",
+                          "brand": "Xiaomi",
+                          "model": "Model 95608",
+                          "price": "77.15",
+                          "operating_system": "iOS",
+                          "createBy": 4,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95609,
+                          "name": "Product 95609",
+                          "brand": "Samsung",
+                          "model": "Model 95609",
+                          "price": "209.46",
+                          "operating_system": "Android",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95610,
+                          "name": "Product 95610",
+                          "brand": "LG",
+                          "model": "Model 95610",
+                          "price": "868.18",
+                          "operating_system": "Android",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95611,
+                          "name": "Product 95611",
+                          "brand": "Xiaomi",
+                          "model": "Model 95611",
+                          "price": "857.02",
+                          "operating_system": "iOS",
+                          "createBy": 1,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95612,
+                          "name": "Product 95612",
+                          "brand": "Xiaomi",
+                          "model": "Model 95612",
+                          "price": "711.24",
+                          "operating_system": "Android",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95613,
+                          "name": "Product 95613",
+                          "brand": "Apple",
+                          "model": "Model 95613",
+                          "price": "18.06",
+                          "operating_system": "iOS",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95614,
+                          "name": "Product 95614",
+                          "brand": "Apple",
+                          "model": "Model 95614",
+                          "price": "183.93",
+                          "operating_system": "iOS",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95615,
+                          "name": "Product 95615",
+                          "brand": "LG",
+                          "model": "Model 95615",
+                          "price": "134.97",
+                          "operating_system": "iOS",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95616,
+                          "name": "Product 95616",
+                          "brand": "Motorola",
+                          "model": "Model 95616",
+                          "price": "819.89",
+                          "operating_system": "Android",
+                          "createBy": 5,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95617,
+                          "name": "Product 95617",
+                          "brand": "Samsung",
+                          "model": "Model 95617",
+                          "price": "338.15",
+                          "operating_system": "Android",
+                          "createBy": 3,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95618,
+                          "name": "Product 95618",
+                          "brand": "Google",
+                          "model": "Model 95618",
+                          "price": "33.95",
+                          "operating_system": "Android",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95619,
+                          "name": "Product 95619",
+                          "brand": "Apple",
+                          "model": "Model 95619",
+                          "price": "100.58",
+                          "operating_system": "iOS",
+                          "createBy": 9,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95620,
+                          "name": "Product 95620",
+                          "brand": "Google",
+                          "model": "Model 95620",
+                          "price": "667.51",
+                          "operating_system": "iOS",
+                          "createBy": 9,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95621,
+                          "name": "Product 95621",
+                          "brand": "Nokia",
+                          "model": "Model 95621",
+                          "price": "190.38",
+                          "operating_system": "iOS",
+                          "createBy": 9,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95622,
+                          "name": "Product 95622",
+                          "brand": "Google",
+                          "model": "Model 95622",
+                          "price": "282.95",
+                          "operating_system": "iOS",
+                          "createBy": 5,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95623,
+                          "name": "Product 95623",
+                          "brand": "Nokia",
+                          "model": "Model 95623",
+                          "price": "436.66",
+                          "operating_system": "Android",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95624,
+                          "name": "Product 95624",
+                          "brand": "Nokia",
+                          "model": "Model 95624",
+                          "price": "473.31",
+                          "operating_system": "Android",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95625,
+                          "name": "Product 95625",
+                          "brand": "Samsung",
+                          "model": "Model 95625",
+                          "price": "489.33",
+                          "operating_system": "iOS",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95626,
+                          "name": "Product 95626",
+                          "brand": "LG",
+                          "model": "Model 95626",
+                          "price": "206.04",
+                          "operating_system": "iOS",
+                          "createBy": 5,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95627,
+                          "name": "Product 95627",
+                          "brand": "Motorola",
+                          "model": "Model 95627",
+                          "price": "493.59",
+                          "operating_system": "iOS",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95628,
+                          "name": "Product 95628",
+                          "brand": "Nokia",
+                          "model": "Model 95628",
+                          "price": "258.03",
+                          "operating_system": "iOS",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95629,
+                          "name": "Product 95629",
+                          "brand": "Xiaomi",
+                          "model": "Model 95629",
+                          "price": "208.09",
+                          "operating_system": "iOS",
+                          "createBy": 8,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95630,
+                          "name": "Product 95630",
+                          "brand": "Xiaomi",
+                          "model": "Model 95630",
+                          "price": "954.53",
+                          "operating_system": "iOS",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95631,
+                          "name": "Product 95631",
+                          "brand": "Motorola",
+                          "model": "Model 95631",
+                          "price": "998.02",
+                          "operating_system": "iOS",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95632,
+                          "name": "Product 95632",
+                          "brand": "Apple",
+                          "model": "Model 95632",
+                          "price": "611.09",
+                          "operating_system": "iOS",
+                          "createBy": 4,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95633,
+                          "name": "Product 95633",
+                          "brand": "Google",
+                          "model": "Model 95633",
+                          "price": "273.83",
+                          "operating_system": "Android",
+                          "createBy": 8,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95634,
+                          "name": "Product 95634",
+                          "brand": "Nokia",
+                          "model": "Model 95634",
+                          "price": "667.30",
+                          "operating_system": "iOS",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95635,
+                          "name": "Product 95635",
+                          "brand": "Sony",
+                          "model": "Model 95635",
+                          "price": "77.29",
+                          "operating_system": "Android",
+                          "createBy": 1,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95636,
+                          "name": "Product 95636",
+                          "brand": "Apple",
+                          "model": "Model 95636",
+                          "price": "294.24",
+                          "operating_system": "iOS",
+                          "createBy": 1,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95637,
+                          "name": "Product 95637",
+                          "brand": "Samsung",
+                          "model": "Model 95637",
+                          "price": "262.13",
+                          "operating_system": "iOS",
+                          "createBy": 4,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95638,
+                          "name": "Product 95638",
+                          "brand": "Samsung",
+                          "model": "Model 95638",
+                          "price": "663.36",
+                          "operating_system": "iOS",
+                          "createBy": 1,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95639,
+                          "name": "Product 95639",
+                          "brand": "Apple",
+                          "model": "Model 95639",
+                          "price": "296.86",
+                          "operating_system": "iOS",
+                          "createBy": 2,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95640,
+                          "name": "Product 95640",
+                          "brand": "Apple",
+                          "model": "Model 95640",
+                          "price": "16.62",
+                          "operating_system": "iOS",
+                          "createBy": 9,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95641,
+                          "name": "Product 95641",
+                          "brand": "Google",
+                          "model": "Model 95641",
+                          "price": "51.32",
+                          "operating_system": "Android",
+                          "createBy": 9,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95642,
+                          "name": "Product 95642",
+                          "brand": "Xiaomi",
+                          "model": "Model 95642",
+                          "price": "658.37",
+                          "operating_system": "iOS",
+                          "createBy": 10,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95643,
+                          "name": "Product 95643",
+                          "brand": "Xiaomi",
+                          "model": "Model 95643",
+                          "price": "502.65",
+                          "operating_system": "Android",
+                          "createBy": 7,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95644,
+                          "name": "Product 95644",
+                          "brand": "Motorola",
+                          "model": "Model 95644",
+                          "price": "995.36",
+                          "operating_system": "iOS",
+                          "createBy": 3,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95645,
+                          "name": "Product 95645",
+                          "brand": "Google",
+                          "model": "Model 95645",
+                          "price": "416.35",
+                          "operating_system": "iOS",
+                          "createBy": 4,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95646,
+                          "name": "Product 95646",
+                          "brand": "Xiaomi",
+                          "model": "Model 95646",
+                          "price": "487.59",
+                          "operating_system": "Android",
+                          "createBy": 6,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95647,
+                          "name": "Product 95647",
+                          "brand": "LG",
+                          "model": "Model 95647",
+                          "price": "555.76",
+                          "operating_system": "iOS",
+                          "createBy": 1,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95648,
+                          "name": "Product 95648",
+                          "brand": "Motorola",
+                          "model": "Model 95648",
+                          "price": "494.41",
+                          "operating_system": "iOS",
+                          "createBy": 5,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95649,
+                          "name": "Product 95649",
+                          "brand": "Sony",
+                          "model": "Model 95649",
+                          "price": "14.84",
+                          "operating_system": "iOS",
+                          "createBy": 5,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        },
+                        {
+                          "id": 95650,
+                          "name": "Product 95650",
+                          "brand": "Sony",
+                          "model": "Model 95650",
+                          "price": "857.20",
+                          "operating_system": "iOS",
+                          "createBy": 4,
+                          "createdAt": "2024-07-15T15:18:33.019Z",
+                          "updatedAt": "2024-07-15T15:18:33.019Z",
+                          "deletedAt": null
+                        }
+                      ],
+                      "pagination": {
+                        "page": 2,
+                        "prevPage": 1,
+                        "nextPage": 3,
+                        "itemsPerPage": 50,
+                        "totalPages": 4,
+                        "totalRegisters": 157
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "summary": "Get product by id",
+        "description": "This route will return the product by id",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/GetProductResponse"
+                },
+                "examples": {
+                  "product": {
+                    "value": {
+                      "status": "success",
+                      "data": {
+                        "id": 95551,
+                        "name": "Product 1",
+                        "brand": "Sony",
+                        "model": "Model 1",
+                        "price": "450.38",
+                        "operating_system": "Android",
+                        "createBy": 1,
+                        "createdAt": "2024-07-15T15:18:30.651Z",
+                        "updatedAt": "2024-07-15T15:18:30.651Z",
+                        "deletedAt": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update product",
+        "description": "This route will update a product",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/CreateProductResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete product",
+        "description": "This route will delete a product",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Product id",
+            "required": true
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "data": {
+                    "status": "success",
+                    "message": "Product deleted successfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "summary": "Create product",
+        "description": "This route will create a product",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "product": {
+                  "value": {
+                    "status": "success",
+                    "data": {
+                      "id": 95706,
+                      "name": "RedMI9",
+                      "brand": "Xiaomi",
+                      "model": "MI-ABC-009",
+                      "price": "899.99",
+                      "operating_system": "Android",
+                      "createBy": 121,
+                      "updatedAt": "2024-07-15T16:40:20.419Z",
+                      "createdAt": "2024-07-15T16:40:20.419Z",
+                      "deletedAt": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/CreateProductResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/deleteAll": {
+      "delete": {
+        "summary": "Delete all products",
+        "description": "This route will delete all products",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "data": {
+                    "status": "success",
+                    "message": "All products deleted successfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/deleted": {
+      "get": {
+        "summary": "Products deleted",
+        "description": "This route will get all products deleted",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetProductResponse"
+              },
+              "examples": {
+                "page": {
+                  "value": {
+                    "page": "2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "data": {
+                    "status": "success",
+                    "message": "Product deleted successfully"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/addProductsTest": {
+      "post": {
+        "summary": "Add products to test",
+        "description": "This route will add 50 products",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "data": {
+                    "status": "success",
+                    "data": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "operating_system": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateProductResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "operating_system": {
+            "type": "string"
+          },
+          "createBy": {
+            "type": "number"
+          }
+        }
+      },
+      "GetProductResponse": {
+        "type": "object",
+        "properties": [
+          {
+            "id": "number",
+            "name": "string",
+            "brand": "string",
+            "model": "string",
+            "price": "string",
+            "operating_system": "string",
+            "createBy": "number",
+            "createdAt": "string",
+            "updatedAt": "string",
+            "deletedAt": null
+          }
+        ],
+        "pagination": {
+          "page": "number",
+          "prevPage": "number",
+          "nextPage": "number",
+          "itemsPerPage": "number",
+          "totalPages": "number",
+          "totalRegisters": "number"
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
