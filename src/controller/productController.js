@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
-const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT });
+// const WebSocket = require('ws');
+// const wss = new WebSocket.Server({ port: process.env.WEBSOCKET_PORT });
 const product = require("../db/models/products");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
@@ -148,12 +148,11 @@ const deleteAllProducts = catchAsync(async (req, res, next) => {
 
       const progress = Math.round((deletedCount / totalProducts) * 100);
 
-      // Enviar progresso via WebSocket
-      wss.clients.forEach(client => {
+      /* wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
           client.send(progress);
         }
-      });
+      }); */
     }
 
     return res.json({
