@@ -2,8 +2,6 @@
   "name": "api_express_sequelize_postgres",
   "version": "1.0.0",
   "main": "index.js",
-  "pg": "^8.12.0",
-  "pg-hstore": "^2.3.4",
   "scripts": {
     "start": "node index.js",
     "server": "nodemon src/index.js"
@@ -26,6 +24,8 @@
   },
   "devDependencies": {
     "nodemon": "^3.1.4",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4"
   }
 }
