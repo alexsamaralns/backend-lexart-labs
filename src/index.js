@@ -14,7 +14,7 @@ const globalErrorHandler = require('./controller/errorController');
 const app = express();
 
 const corsOptions ={
-  origin: 'http://localhost:3000', 
+  origin: process.env.ORIGIN, 
   credentials: true,
   optionSuccessStatus: 200,
 };
