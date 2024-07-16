@@ -1,6 +1,6 @@
 const user = require('../db/models/user');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
