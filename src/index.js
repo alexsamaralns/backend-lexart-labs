@@ -11,6 +11,7 @@ const profileRouter = require('./route/profileRoute');
 const catchAsync = require('./utils/catchAsync');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controller/errorController');
+const WebSocket = require('ws');
 const app = express();
 
 const corsOptions ={
@@ -39,6 +40,20 @@ app.use(globalErrorHandler);
 
 const PORT = process.env.APP_PORT || 4000;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log('Server up and running', PORT);
+});
+
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+
+  ws.on('message', (message) => {
+    console.log('Received:', message);
+  });
+
+  ws.on('close', () => {
+    console.log('Client disconnected');
+  });
 });
