@@ -1,5 +1,6 @@
 require('dotenv').config({ path: `${process.cwd()}/.env` });
 const cors = require('cors');
+const http = require('http');
 const express = require('express');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
@@ -40,9 +41,11 @@ app.use(globalErrorHandler);
 
 const PORT = process.env.APP_PORT || 4000;
 
-const server = app.listen(PORT, () => {
+/* const server = app.listen(PORT, () => {
   console.log('Server up and running', PORT);
-});
+}); */
+
+const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ server });
 
@@ -56,4 +59,8 @@ wss.on('connection', (ws) => {
   ws.on('close', () => {
     console.log('Client disconnected');
   });
+});
+
+server.listen(PORT, () => {
+  console.log('Server up and running', PORT);
 });
